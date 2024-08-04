@@ -1,0 +1,59 @@
+{
+  "name": "weighted-random-item-sampler",
+  "version": "1.0.0",
+  "description": "A weighted random item sampler (selector), where the probability of selecting an item is proportional to its weight. The sampling method utilizes a binary search optimization, making it suitable for performance-demanding applications where the set of items is large and the sampling frequency is high.",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ori88c/weighted-random-item-sampler.git"
+  },
+  "contributors": [
+    "Ori Cohen (https://github.com/ori88c/)"
+  ],
+  "homepage": "https://github.com/ori88c/weighted-random-item-sampler#readme",
+  "author": "Ori Cohen",
+  "license": "Apache-2.0",
+  "scripts": {
+    "build": "tsc",
+    "prepare": "npm run build",
+    "test": "jest"
+  },
+  "keywords": [
+    "weight",
+    "weighted",
+    "sample",
+    "sampler",
+    "sampling",
+    "random",
+    "randomized",
+    "random-select",
+    "select",
+    "selector",
+    "selection",
+    "weighted-selection",
+    "weighted-sampling",
+    "weighted-item",
+    "weighted-object",
+    "nodejs",
+    "typescript",
+    "ts",
+    "ES2020"
+  ],
+  "engines": {
+    "node": ">=14.5.0"
+  },
+  "devDependencies": {
+    "@types/jest": "^29.5.12",
+    "jest": "^29.7.0",
+    "ts-jest": "^29.1.5",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.5.2"
+  },
+  "types": "./dist/weighted-random-item-sampler.d.ts",
+  "main": "./dist/weighted-random-item-sampler.js",
+  "files": [
+    "src/",
+    "dist/",
+    "README.md",
+    "LICENSE"
+  ]
+}
