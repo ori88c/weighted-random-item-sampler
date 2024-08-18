@@ -1,4 +1,4 @@
-<h2 align="middle">weighted-random-item-sampler</h2>
+<h2 align="middle">Weighted Random Item Sampler</h2>
 
 The `WeightedRandomItemSampler` class implements a random sampler where the probability of selecting an item is proportional to its weight.
 
@@ -13,17 +13,17 @@ Use case examples include:
 * __Anomaly Detection__: Sample data points from a dataset with weights based on their anomaly scores for further analysis.
 * __ML Model Training__: Select training samples with weights based on their importance or difficulty to ensure diverse and balanced training data.
 
-## Key Features
+## Key Features :sparkles:
 
 - __Weighted Random Sampling__: Sampling items with proportional probability to their weight.
-- __Efficiency__: O(log(n)) time and O(1) space per sample, making this class suitable for performance-demanding applications where the set of items is large and the sampling frequency is high.
-- __Comprehensive documentation__: The class is thoroughly documented, enabling IDEs to provide helpful tooltips that enhance the coding experience.
+- __Efficiency :gear:__: O(log(n)) time and O(1) space per sample, making this class suitable for performance-demanding applications where the set of items is large and the sampling frequency is high.
+- __Comprehensive documentation :books:__: The class is thoroughly documented, enabling IDEs to provide helpful tooltips that enhance the coding experience.
 - __Tests__: Fully covered by unit tests.
 - No external runtime dependencies: Only development dependencies are used.
 - ES2020 Compatibility: The `tsconfig` target is set to ES2020, ensuring compatibility with ES2020 environments.
 - TypeScript support.
 
-## Use Case Example
+## Use Case Example :man_technologist:
 
 Consider a component responsible for selecting training-samples for a ML model. By assigning weights based on the importance or difficulty of each sample, we ensure a diverse and balanced training dataset.
 
@@ -60,6 +60,6 @@ class ModelTrainer {
 }
 ```
 
-## License
+## License :scroll:
 
 [Apache 2.0](LICENSE)
