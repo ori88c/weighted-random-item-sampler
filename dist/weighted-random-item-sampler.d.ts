@@ -46,11 +46,25 @@ export declare class WeightedRandomItemSampler<T> {
      * Constructor
      *
      * Initializes the sampler by performing input validations and O(items.length) pre-processing.
-     * The number of items must be positive and equal to the number of respective weights. All weights must be positive.
+     * The number of items must be positive and equal to the number of respective weights. All weights
+     * must be positive.
      *
-     * @param items - The items to sample from.
-     * @param respectiveWeights - The respective weights for the items, where respectiveWeights[i] is the weight of items[i].
-     * @throws Will throw an error if validation fails.
+     * ### Ownership Transfer
+     * Ownership of the 'items' array is transferred to this class upon instantiation, meaning the caller should
+     * **not modify** the array after passing it to the constructor.
+     * While cloning the array would prevent unintended modifications, transferring ownership is generally more
+     * efficient since callers rarely need to retain references for other purposes beyond sampling.
+     * If your use case does require retaining the original items for additional purposes, consider storing a copy
+     * in a separate data structure.
+     *
+     * @param items - The items to sample from. Ownership of this array is transferred to the class;
+     *                therefore, **do not** modify it after passing it to the constructor.
+     * @param respectiveWeights - The respective weights for the items, where respectiveWeights[i] is the
+     *                            weight of items[i].
+     * @throws Error if validation fails; possible causes can be:
+     *         - No items provided
+     *         - A negative weight is provided
+     *         - The length of items differs from the length of respectiveWeights
      */
     constructor(items: ReadonlyArray<T>, respectiveWeights: ReadonlyArray<number>);
     /**

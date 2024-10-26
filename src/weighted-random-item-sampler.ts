@@ -51,36 +51,51 @@ export class WeightedRandomItemSampler<T> {
      * Constructor
      * 
      * Initializes the sampler by performing input validations and O(items.length) pre-processing.
-     * The number of items must be positive and equal to the number of respective weights. All weights must be positive.
+     * The number of items must be positive and equal to the number of respective weights. All weights
+     * must be positive.
      * 
-     * @param items - The items to sample from.
-     * @param respectiveWeights - The respective weights for the items, where respectiveWeights[i] is the weight of items[i].
-     * @throws Will throw an error if validation fails.
+     * ### Ownership Transfer
+     * Ownership of the 'items' array is transferred to this class upon instantiation, meaning the caller should
+     * **not modify** the array after passing it to the constructor. 
+     * While cloning the array would prevent unintended modifications, transferring ownership is generally more
+     * efficient since callers rarely need to retain references for other purposes beyond sampling.  
+     * If your use case does require retaining the original items for additional purposes, consider storing a copy
+     * in a separate data structure.
+     * 
+     * @param items - The items to sample from. Ownership of this array is transferred to the class;
+     *                therefore, **do not** modify it after passing it to the constructor.
+     * @param respectiveWeights - The respective weights for the items, where respectiveWeights[i] is the
+     *                            weight of items[i].
+     * @throws Error if validation fails; possible causes can be:
+     *         - No items provided
+     *         - A negative weight is provided
+     *         - The length of items differs from the length of respectiveWeights
      */
     constructor(
         items: ReadonlyArray<T>,
         respectiveWeights: ReadonlyArray<number>
     ) {
         if (items.length === 0) {
-            throw new Error("Zero items were provided to WeightedRandomItemSampler");
+            throw new Error("No items provided");
         }
 
         if (items.length !== respectiveWeights.length) {
             throw new Error(
-                `WeightedRandomItemSampler received ${items.length} items and ${respectiveWeights.length} ` +
-                `weights. Each item must have exactly 1 respective weight`
+                `Mismatch: received ${items.length} items and ${respectiveWeights.length} weights. ` +
+                `Each item must have exactly one corresponding weight.`
             );
         }
         
-        const ascRangeEnds = new Array<number>();
+        const ascRangeEnds = new Array<number>(items.length).fill(0);
+        let currIndex = 0;
         let weightsPrefixSum = 0;
         for (const weight of respectiveWeights) {
             if (weight <= 0) {
-                throw new Error(`WeightedRandomItemSampler received a non-positive weight of ${weight}`);
+                throw new Error(`Received a non-positive weight of ${weight}`);
             }
 
             weightsPrefixSum += weight;
-            ascRangeEnds.push(weightsPrefixSum);
+            ascRangeEnds[currIndex++] = weightsPrefixSum;
             // The ith item (0-indexed) is associated with the following imaginary range:
             // [previous prefix sum, current prefix sum)
             // Ranges are pairwise disjoint intervals with inclusive starts and exclusive ends.
