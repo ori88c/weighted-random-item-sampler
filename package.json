@@ -1,7 +1,7 @@
 {
   "name": "weighted-random-item-sampler",
-  "version": "1.0.1",
-  "description": "A weighted random item sampler (selector), where the probability of selecting an item is proportional to its weight. The sampling method utilizes a binary search optimization, making it suitable for performance-demanding applications where the set of items is large and the sampling frequency is high.",
+  "version": "1.0.2",
+  "description": "A weighted random item sampler (selector), where the probability of selecting an item is proportional to its weight, with replacement allowed between samples. In other words, an item can be sampled more than once. The sampling method utilizes a binary search optimization, making it suitable for performance-demanding applications where the set of items is large and the sampling frequency is high.",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/ori88c/weighted-random-item-sampler.git"
