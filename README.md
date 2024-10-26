@@ -12,7 +12,7 @@ Use case examples include:
 * __Attack Simulation__: Randomly select attack vectors for penetration testing based on their likelihood or impact.
 * __ML Model Training__: Select training samples with weights based on their importance or difficulty to ensure diverse and balanced training data.
 
-If your use case requires sampling each item **exactly once** without replacement, consider using [non-replacement-weighted-random-item-sampler](https://www.npmjs.com/package/non-replacement-weighted-random-item-sampler) can instead.
+If your use case requires sampling each item **exactly once** without replacement, consider using [non-replacement-weighted-random-item-sampler](https://www.npmjs.com/package/non-replacement-weighted-random-item-sampler) instead.
 
 ## Table of Contents :bookmark_tabs:
 
